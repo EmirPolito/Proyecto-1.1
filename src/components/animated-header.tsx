@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ModeToggle } from "@/components/ui/buttonDL";
@@ -13,7 +14,6 @@ export function AnimatedHeader() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,34 +32,27 @@ export function AnimatedHeader() {
           ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
+      
     >
+
+
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a
-            href="#"
-            className="group relative overflow-hidden"
+          {/* Logo reemplazado */}
+
+          
+          <Link
+            href="/"
+            className="text-2xl font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
             style={{
               animation:
                 "slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both",
             }}
           >
-            <span className="relative font-bold text-xl md:text-2xl text-foreground inline-block">
-              {"ArcomsEdu".split("").map((letter, index) => (
-                <span
-                  key={index}
-                  className="inline-block transition-all duration-300 hover:text-primary hover:-translate-y-1 hover:scale-110"
-                  style={{
-                    animation: `letterPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) ${
-                      index * 0.05
-                    }s both`,
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </span>
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-500 ease-out" />
-          </a>
+            <span className="font-bold">RALQ</span>
+            <span className="font-light ml-[1px]"></span>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
@@ -85,7 +78,6 @@ export function AnimatedHeader() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Botón modo claro/oscuro */}
             <div
               style={{
                 animation:
@@ -193,6 +185,7 @@ export function AnimatedHeader() {
         </div>
       </div>
 
+      {/* Animaciones CSS */}
       <style jsx>{`
         @keyframes fadeInDown {
           from {
@@ -224,20 +217,6 @@ export function AnimatedHeader() {
           to {
             opacity: 1;
             transform: translateX(0);
-          }
-        }
-
-        @keyframes letterPop {
-          0% {
-            opacity: 0;
-            transform: translateY(-20px) scale(0.5);
-          }
-          50% {
-            transform: translateY(5px) scale(1.1);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
           }
         }
 
