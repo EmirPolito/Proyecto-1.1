@@ -19,19 +19,25 @@ export function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="relative w-9 h-9 shrink-0 select-none transition-all duration-300 hover:scale-105 hover:shadow-md focus-visible:ring-0 focus:outline-none"
+          className="relative w-9 h-9 flex items-center justify-center rounded-lg 
+                     transition-colors duration-300 hover:bg-muted focus-visible:ring-0"
         >
-          {/* Iconos: sol y luna */}
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 
+                         transition-transform dark:-rotate-90 dark:scale-0" />
+
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 
+                          transition-transform dark:rotate-0 dark:scale-100" />
+
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
 
+
       <DropdownMenuContent
         align="end"
         sideOffset={6}
-        className="mt-2 w-36 rounded-xl border border-border/50 bg-background/80 backdrop-blur-xl shadow-lg animate-in fade-in-0 zoom-in-95"
+        className="mt-2 w-36 rounded-xl border border-border/50 bg-background/80 
+                   backdrop-blur-xl shadow-lg animate-in fade-in-0 zoom-in-95"
       >
         <DropdownMenuItem
           onClick={() => setTheme("light")}
@@ -39,12 +45,14 @@ export function ModeToggle() {
         >
           Claro
         </DropdownMenuItem>
+
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
           className="cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors"
         >
           Oscuro
         </DropdownMenuItem>
+
         <DropdownMenuItem
           onClick={() => setTheme("system")}
           className="cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors"

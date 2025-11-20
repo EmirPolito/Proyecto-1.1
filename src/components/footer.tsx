@@ -37,24 +37,39 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+          
           {/* Logo and Description */}
           <motion.div
             className="col-span-1 md:col-span-2"
             variants={itemVariants}
           >
-            <Link
-              href="/"
-              className="text-2xl font-semibold text-foreground hover:text-muted-foreground transition-colors duration-200"
-            >
-              <span className="font-bold">Arcoms</span>
-              <span className="font-light ml-[1px]">Edu</span>
+
+            
+            {/* Logo (modo claro/oscuro) */}
+            <Link href="/" className="inline-block -ml-4 mt-1">
+              {/* Logo modo claro */}
+              <img
+                src="/modo-claro.png"
+                alt="Logo RALQ Light"
+                className="h-32 w-32 object-contain dark:hidden"
+              />
+              {/* Logo modo oscuro */}
+              <img
+                src="/modo-oscuro-removebg-preview.png"
+                alt="Logo RALQ Dark"
+                className="h-28 w-28 object-contain hidden dark:block"
+              />
             </Link>
 
-            <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-md">
+            <p className="mt-2 text-muted-foreground text-sm leading-relaxed max-w-md">
               Revolucionando la educación química con tecnología 3D y realidad
               aumentada. Hacemos que el aprendizaje sea más interactivo, visual
               y efectivo.
             </p>
+
+
+            
             <div className="flex space-x-4 mt-6">
               <motion.a
                 href="mailto:emirpolitog@gmail.com"
@@ -97,10 +112,11 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Productos */}
+
+          {/* Fundadores */}
           <motion.div variants={itemVariants}>
             <h3 className="text-sm font-semibold text-foreground mb-4">
-              Recursos
+              Fundadores
             </h3>
             <ul className="space-y-3">
               <li>
@@ -108,7 +124,7 @@ const Footer = () => {
                   href="/productos"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
-                  Modelos 3D
+                  Emir Polito Guevara
                 </Link>
               </li>
               <li>
@@ -116,7 +132,7 @@ const Footer = () => {
                   href="/productos"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
-                  Realidad Aumentada
+                  Irving Esteban Molina Méndez
                 </Link>
               </li>
               <li>
@@ -124,7 +140,7 @@ const Footer = () => {
                   href="/productos"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
-                  Instrumentos Virtuales
+                  Cristian Daniel Barraza Hernández
                 </Link>
               </li>
               <li>
@@ -188,7 +204,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              © 2024 ArcomsEdu. Todos los derechos reservados.
+              © 2024 RALQ. Todos los derechos reservados.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
