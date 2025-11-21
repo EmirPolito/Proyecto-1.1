@@ -13,14 +13,13 @@ export function AnimatedHeader() {
 
   const pathname = usePathname();
 
-  // Rutas donde se oculta el header y solo deja el logo
   const hideMenuRoutes = [
     "/inicio-sesion",
-    "/registro",
     "/contacto",
     "/ayuda",
     "/nosotros",
     "/blog",
+    "/registro",
   ];
 
   const shouldHideMenu = hideMenuRoutes.some((route) =>
@@ -44,15 +43,23 @@ export function AnimatedHeader() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 
+                  transition-colors transition-shadow transition-opacity 
+                  duration-500 ease-out
+                  ${
+                    isMobileMenuOpen
+                      ? "bg-background/95 backdrop-blur-xl border-b border-border"
+                      : isScrolled
+                      ? "bg-background/80 backdrop-blur-xl border-b border-border shadow-sm"
+                      : "bg-transparent"
+                  }`}
     >
+      {/* Para hacer el header más oscuro, descomenta la siguiente línea */}
+      {/* className="bg-background/90 backdrop-blur-xl border-b border-border shadow-sm" */}
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* --- LOGO (modo claro y oscuro, más grande) --- */}
+          {/* LOGO */}
           <Link
             href="/"
             className="relative block transition-all duration-200"
@@ -61,21 +68,19 @@ export function AnimatedHeader() {
                 "slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both",
             }}
           >
-            {/* Logo modo claro */}
             <img
               src="/modo-claro.png"
               alt="Logo RALQ Light"
-              className="dark:hidden h-30 w-30 max-h-full max-w-full object-contain"
+              className="dark:hidden h-25 w-25 max-h-full max-w-full object-contain"
             />
-            {/* Logo modo oscuro */}
             <img
               src="/modo-oscuro-removebg-preview.png"
               alt="Logo RALQ Dark"
-              className="hidden dark:block h-30 w-30 max-h-full max-w-full object-contain"
+              className="hidden dark:block h-25 w-25 max-h-full max-w-full object-contain"
             />
           </Link>
 
-          {/* --- MENÚ ESCRITORIO (Oculto si está en ruta restringida) --- */}
+          {/* MENÚ ESCRITORIO */}
           {!shouldHideMenu && (
             <>
               <nav className="hidden md:flex items-center gap-1">
@@ -83,23 +88,25 @@ export function AnimatedHeader() {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="relative px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-all duration-300 group overflow-hidden"
+                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 group overflow-hidden
+                      text-foreground/70 hover:text-foreground`}
                     style={{
                       animation: `fadeInDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${
                         index * 0.1 + 0.2
                       }s both`,
                     }}
                   >
-                    <span className="relative z-10 inline-block transition-transform duration-300 group-hover:scale-110">
+                    <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                       {item.label}
                     </span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-muted to-muted/50 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 rounded-lg" />
-                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary -translate-x-1/2 group-hover:w-3/4 transition-all duration-300" />
+
+                    {/* Hover: solo línea inferior */}
+                    <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary -translate-x-1/2 transition-all duration-300 group-hover:w-3/4"></span>
                   </a>
                 ))}
               </nav>
 
-              {/* --- BOTONES DESKTOP --- */}
+              {/* BOTONES DESKTOP */}
               <div className="hidden md:flex items-center gap-3">
                 <div
                   style={{
@@ -125,14 +132,11 @@ export function AnimatedHeader() {
                   </Button>
                 </Link>
 
-                {/* --- BOTÓN REGISTRARSE (VERDE) --- */}
                 <Link href="/registro">
                   <Button
-                    className="
-                      relative text-sm font-medium overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300
+                    className="relative text-sm font-medium overflow-hidden group shadow-lg hover:shadow-xl transition-all duration-300
                       bg-[#637b6c] text-white hover:bg-[#516458]
-                      dark:bg-white dark:text-black dark:hover:bg-gray-200
-                    "
+                      dark:bg-white dark:text-black dark:hover:bg-gray-200"
                     style={{
                       animation:
                         "fadeInRight 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both",
@@ -147,11 +151,11 @@ export function AnimatedHeader() {
             </>
           )}
 
-          {/* --- BOTÓN MENÚ MÓVIL --- */}
+          {/* BOTÓN DE MENÚ MÓVIL */}
           {!shouldHideMenu && (
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:bg-muted rounded-lg transition-all duration-300 hover:scale-110 hover:rotate-90"
+              className="md:hidden p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:rotate-90"
               aria-label="Toggle menu"
               style={{
                 animation:
@@ -159,15 +163,15 @@ export function AnimatedHeader() {
               }}
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6 animate-spin-in" />
+                <X className="w-6 h-6 animate-spin-in text-white" />
               ) : (
-                <Menu className="w-6 h-6 animate-spin-in" />
+                <Menu className="w-6 h-6 animate-spin-in text-white" />
               )}
             </button>
           )}
         </div>
 
-        {/* --- MENÚ MÓVIL --- */}
+        {/* MENÚ MÓVIL */}
         {!shouldHideMenu && (
           <div
             className={`md:hidden overflow-hidden transition-all duration-500 ease-out ${
@@ -197,26 +201,22 @@ export function AnimatedHeader() {
                 <Link href="/inicio-sesion">
                   <Button
                     variant="ghost"
-                    className="w-full justify-start text-sm font-medium transition-all duration-300 hover:translate-x-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    style={{
-                      animation: isMobileMenuOpen
-                        ? `slideInLeft 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both`
-                        : "none",
-                    }}
+                    className="relative text-sm font-medium text-foreground/70 overflow-hidden group bg-transparent border-none shadow-none"
                   >
-                    Iniciar sesión
+                    <span className="relative z-10 transition-transform duration-300 group-hover:scale-105">
+                      Iniciar sesión
+                    </span>
+
+                    {/* Línea inferior al pasar el cursor */}
+                    <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-primary -translate-x-1/2 transition-all duration-300 group-hover:w-3/4"></span>
                   </Button>
                 </Link>
 
-                {/* --- BOTÓN REGISTRARSE MOVIL (VERDE) --- */}
                 <Link href="/registro">
                   <Button
-                    className="
-                      w-full text-sm font-medium transition-all duration-300 hover:scale-105
+                    className="w-full text-sm font-medium transition-all duration-300 hover:scale-105
                       bg-[#637b6c] text-white hover:bg-[#516458]
-                      dark:bg-white dark:text-black dark:hover:bg-gray-200
-                    "
+                      dark:bg-white dark:text-black dark:hover:bg-gray-200"
                     onClick={() => setIsMobileMenuOpen(false)}
                     style={{
                       animation: isMobileMenuOpen
@@ -233,8 +233,8 @@ export function AnimatedHeader() {
         )}
       </div>
 
-      {/* --- ANIMACIONES --- */}
-      <style jsx>{`
+      {/* ANIMACIONES */}
+      <style jsx global>{`
         @keyframes fadeInDown {
           from {
             opacity: 0;
@@ -277,21 +277,8 @@ export function AnimatedHeader() {
           }
         }
 
-        @keyframes shimmer {
-          0% {
-            background-position: 200% 0;
-          }
-          100% {
-            background-position: -200% 0;
-          }
-        }
-
         .animate-spin-in {
           animation: spin-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .animate-shimmer {
-          animation: shimmer 3s linear infinite;
         }
       `}</style>
     </header>
