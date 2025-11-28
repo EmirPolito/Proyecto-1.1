@@ -1,12 +1,15 @@
 "use client";
 
-import { TimelineDemo }  from "@/components/timelineDemo";
-
+import { AnimatedHeader } from "@/components/animated-header";
+import  ThreeDCardDemo  from "@/components/contenido-blog";
+import Footer from "@/components/footer";
 
 export default function BlogPage() {
   return (
     <div>
-      <TimelineDemo />
+      <AnimatedHeader />
+      <ThreeDCardDemo />
+      <Footer />
     </div>
   );
 }

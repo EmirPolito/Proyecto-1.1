@@ -1,10 +1,16 @@
+"use client";
+
+import { AnimatedHeader } from "@/components/animated-header";
+import Footer from "@/components/footer";
+import ContenidoAyuda from "@/components/contenido-ayuda";
+
 export default function AyudaPage() {
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold">Ayuda</h1>
-      <p className="mt-4 text-muted-foreground">
-        Aquí encontrarás preguntas frecuentes y soporte.
-      </p>
+    <div>
+      <AnimatedHeader />
+      <ContenidoAyuda />
+
+      <Footer />
     </div>
   );
 }

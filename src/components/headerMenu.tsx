@@ -52,9 +52,9 @@ export function AnimatedHeaderMenu() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* LOGO */}
+          {/* Logo */}
           <Link
-            href="/menu"
+            href="/"
             className="relative block transition-all duration-200"
             style={{
               animation: "slideInLeft 0.8s cubic-bezier(0.34,1.56,0.64,1) both",
@@ -62,23 +62,22 @@ export function AnimatedHeaderMenu() {
           >
             {mounted ? (
               <img
-                key={resolvedTheme}
                 src={
                   resolvedTheme === "dark"
                     ? "/modo-oscuro-removebg-preview.png"
                     : "/modo-claro.png"
                 }
                 alt="Logo"
-                className="h-25 w-25 max-h-full max-w-full object-contain"
+                className="h-26 w-26 max-h-full max-w-full object-contain"
               />
             ) : (
-              <div className="h-25 w-25 bg-gray-200" />
+              <div className="h-26 w-26" />
             )}
           </Link>
 
           {/* MENU DESKTOP Y MOBILE */}
           {!shouldHideMenu && (
-            <div className="relative flex items-center gap-4">
+            <div className="relative flex items-center gap-10">
               {/* Desktop only */}
               <div className="hidden md:flex items-center gap-10">
                 <ModoSelect />
@@ -125,6 +124,7 @@ export function AnimatedHeaderMenu() {
                       </Link>
                     </div>
 
+
                     <button
                       className={`mt-5 w-full py-2 rounded-lg text-sm font-semibold text-white ${
                         resolvedTheme === "light"
@@ -136,6 +136,11 @@ export function AnimatedHeaderMenu() {
                     >
                       Cerrar sesión
                     </button>
+
+
+
+
+                    
                   </div>
                 )}
               </div>

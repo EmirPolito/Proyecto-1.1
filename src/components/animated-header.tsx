@@ -18,13 +18,21 @@ export function AnimatedHeader() {
 
   const hideMenuRoutes = [
     "/inicio-sesion",
-    "/ayuda",
-    "/blog",
     "/registro",
     "/menu"
   ];
 
+  //  NUEVA FUNCIÓN AÑADIDA: rutas donde NO se esconderá el header al subir
+  const fixedHeaderRoutes = [
+    "/contacto"
+  ];
+
   const shouldHideMenu = hideMenuRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
+
+  // ¿La ruta actual debe mantener el header fijo? 
+  const forceFixedHeader = fixedHeaderRoutes.some((route) =>
     pathname.startsWith(route)
   );
 
@@ -38,9 +46,6 @@ export function AnimatedHeader() {
     setMounted(true); // evita hydration mismatch
   }, []);
 
-  // -----------------------------
-  // Variables de color dinámicas
-  // -----------------------------
   useEffect(() => {
     const modeColor = getComputedStyle(
       document.documentElement
@@ -68,9 +73,11 @@ export function AnimatedHeader() {
       //     : "bg-[var(--background)]/80 border-b border-[var(--border)]"
       // }`}
 
-      // Con este se esconde el header al llegar arriba
+      // Con este se hace transparente arriba (pero ahora queda fijo si está en fixedHeaderRoutes)
       className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow transition-opacity duration-500 ease-out ${
-        isMobileMenuOpen
+        forceFixedHeader
+          ? "bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)] shadow-sm"
+          : isMobileMenuOpen
           ? "bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)]"
           : isScrolled
           ? "bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)] shadow-sm"
@@ -95,10 +102,10 @@ export function AnimatedHeader() {
                     : "/modo-claro.png"
                 }
                 alt="Logo"
-                className="h-25 w-25 max-h-full max-w-full object-contain"
+                className="h-26 w-26 max-h-full max-w-full object-contain"
               />
             ) : (
-              <div className="h-25 w-25 bg-gray-200" /> // placeholder
+              <div className="h-26 w-26" />
             )}
           </Link>
 
@@ -123,7 +130,7 @@ export function AnimatedHeader() {
                     <span
                       className="absolute bottom-0 left-1/2 w-0 h-0.5 transition-all duration-300 group-hover:w-3/4"
                       style={{
-                        backgroundColor: "var(--primary-2)", // <- línea dinámica
+                        backgroundColor: "var(--primary-2)",
                         transform: "translateX(-50%)",
                       }}
                     ></span>
@@ -157,7 +164,7 @@ export function AnimatedHeader() {
                       </span>
                     </Button>
                   ) : (
-                    <div className="h-10 w-32 bg-gray-200 rounded" /> // placeholder
+                    <div className="h-10 w-32 " />
                   )}
                 </Link>
 
@@ -181,7 +188,7 @@ export function AnimatedHeader() {
                       </span>
                     </Button>
                   ) : (
-                    <div className="h-10 w-32 bg-gray-200 rounded" /> // placeholder
+                    <div className="h-10 w-32" />
                   )}
                 </Link>
               </div>
@@ -248,7 +255,7 @@ export function AnimatedHeader() {
                     <span
                       className="absolute bottom-0 left-1/2 w-0 h-[2px] transition-all duration-300 group-hover:w-3/4"
                       style={{
-                        backgroundColor: "var(--primary)",
+                        backgroundColor: "var(--primary-2)",
                         transform: "translateX(-50%)",
                       }}
                     ></span>
@@ -332,15 +339,14 @@ export function AnimatedHeader() {
   );
 }
 
-
-
-
-
-      // Con este no se esconde el header al llegar arriba
-      // className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow transition-opacity duration-500 ease-out ${
-      //   isMobileMenuOpen
-      //     ? "bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)]"
-      //     : isScrolled
-      //     ? "bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)] shadow-sm"
-      //     : "bg-[var(--background)]/80 border-b border-[var(--border)]"
-      // }`}
+// -----------------------------
+// Tus comentarios originales abajo NO se tocan
+// -----------------------------
+// Con este no se esconde el header al llegar arriba
+// className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow transition-opacity duration-500 ease-out ${
+//   isMobileMenuOpen
+//     ? "bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)]"
+//     : isScrolled
+//     ? "bg-[var(--background)]/80 backdrop-blur-xl border-b border-[var(--border)] shadow-sm"
+//     : "bg-[var(--background)]/80 border-b border-[var(--border)]"
+// }`}

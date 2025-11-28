@@ -36,14 +36,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full bg-[var(--background)] font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-29 px-4 md:px-8 lg:px-10 text-center">
-        <h2 className="text-lg md:text-5xl mb-4 text-[var(--foreground)] max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto py-31 px-4 md:px-8 lg:px-10 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-5 text-balance">
           Sobre Nosotros
-        </h2>
-        <p className="text-base md:text-lg text-[var(--foreground-secondary)]  mx-auto">
+          </h1>
+
+          <p className="text-lg text-muted-foreground text-balance max-w-1xl mx-auto">
           Desde 2023, hemos estado desarrollando RALQ, con el objetivo de crear experiencias educativas interactivas para estudiantes de química.
-        </p>
-      </div>
+          </p>
+        </div>
+
 
       <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (

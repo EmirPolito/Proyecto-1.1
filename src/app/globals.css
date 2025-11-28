@@ -52,6 +52,10 @@
   /* color al blanco que aparece al pasar el curosr en el header linea */
   --primary: #14a8d5;
   --primary-2: #000000;
+  --primary-3: #ffffff;
+  --primary-4: #635f5f;
+  --primary-5: #dad3d3;
+  --primary-6: #556a5e;
 
   --primary-foreground: #ffffff; /* texto sobre primary */
 
@@ -66,7 +70,7 @@
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
+  --input: #ffffff;
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -102,6 +106,10 @@
 
   --primary: #ffffff; /* blanco */
   --primary-2: #ffffff;
+  --primary-3: #ffffff;
+  --primary-4: #ffffff;
+  --primary-5: #3d3b3b;
+  --primary-6: #000000;
 
   --primary-foreground: #000000;
   --accent: #ffffff;
@@ -112,6 +120,8 @@
 
 [data-theme="orange"] {
   --background: #ffffff;
+  --primary-3: #ff5e00;
+
   --foreground: #ff5e00;
   --primary: #e9711b;
   --primary-2: #e9711b;
@@ -127,6 +137,8 @@
   --foreground: #2251d2;
   --primary: #3b82f6;
   --primary-2: #3b82f6;
+  --primary-3: #2251d2;
+
   --primary-foreground: #ffffff;
   --accent: #60a5fa;
   --accent-foreground: #ffffff;
@@ -139,8 +151,10 @@
   --background: #ffffff;
   /* letras grandes de Hero */
   --foreground: #ee2b79;
+  --primary-3: #ee2b79;
+
   --primary: #ec4899;
-    --primary-2: #ec4899;
+  --primary-2: #ec4899;
 
   --primary-foreground: #ffffff;
   --accent: #f472b6;
@@ -152,9 +166,9 @@
 [data-theme="yellow"] {
   --background: #fefce8;
   --foreground: #e1c617;
+  --primary-3: #e1c617;
   --primary: #e1c617;
   --primar-2: #e1c617;
-  
   --primary-foreground: #ffffff;
   --accent: #fde047;
   --accent-foreground: #ffffff;
@@ -165,6 +179,8 @@
 [data-theme="violet"] {
   --background: #ffffff;
   --foreground: #6814e8;
+  --primary-3: #6814e8;
+
   --primary: #8b5cf6;
   --primary-2: #8b5cf6;
   --primary-foreground: #ffffff;
@@ -199,6 +215,7 @@
   --foreground: #222222; /* Texto principal */
   --foreground-secondary: #555555; /* Texto secundario */
   --link-color: #0072b2; /* Enlaces / primario destacable */
+  --primary-3: #222222;
 
   /* Colores primarios y secundarios */
   --primary: #0072b2; /* Azul fuerte para botones y acciones */

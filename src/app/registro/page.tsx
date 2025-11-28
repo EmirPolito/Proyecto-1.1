@@ -87,7 +87,6 @@ export default function SignUpForm() {
       {/* Left Side */}
       <div className="lg:col-span-11 flex items-center justify-center p-6 lg:p-8 bg-background overflow-y-auto transition-colors">
         <div className="w-full max-w-lg">
-
           {/* Header */}
           <div
             className={`mb-12 text-center transition-all duration-500 ${
@@ -107,7 +106,9 @@ export default function SignUpForm() {
             {/* Email */}
             <div
               className={`space-y-2 transition-all duration-500 delay-75 ${
-                animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                animate
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-2"
               }`}
             >
               <Label htmlFor="email" className="text-sm font-semibold">
@@ -135,7 +136,9 @@ export default function SignUpForm() {
             {/* Password */}
             <div
               className={`space-y-2 transition-all duration-500 delay-100 ${
-                animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                animate
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-2"
               }`}
             >
               <Label htmlFor="password" className="text-sm font-semibold">
@@ -166,7 +169,11 @@ export default function SignUpForm() {
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300 
                   hover:text-white transition-all duration-300 hover:scale-110"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
             </div>
@@ -174,10 +181,15 @@ export default function SignUpForm() {
             {/* Confirm Password */}
             <div
               className={`space-y-2 transition-all duration-500 delay-125 ${
-                animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+                animate
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-2"
               }`}
             >
-              <Label htmlFor="confirmPassword" className="text-sm font-semibold">
+              <Label
+                htmlFor="confirmPassword"
+                className="text-sm font-semibold"
+              >
                 Confirmar contraseña
               </Label>
 
@@ -205,7 +217,11 @@ export default function SignUpForm() {
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-300 
                   hover:text-white transition-all duration-300 hover:scale-110"
                 >
-                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showConfirmPassword ? (
+                    <EyeOff className="w-5 h-5" />
+                  ) : (
+                    <Eye className="w-5 h-5" />
+                  )}
                 </button>
               </div>
             </div>
@@ -220,7 +236,11 @@ export default function SignUpForm() {
                 py-4 rounded-lg font-semibold 
                 transition-all duration-500 delay-150 mt-1 
                 hover:scale-105 hover:shadow-md active:scale-98
-                ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+                ${
+                  animate
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-2"
+                }`}
             >
               {isLoading ? "Registrando..." : "Registrarse"}
             </Button>
@@ -246,7 +266,11 @@ export default function SignUpForm() {
             }`}
           >
             {/* Google */}
-            <Button type="button" variant="outline" className={`${baseSocial} ${liftHover} ${colorHover}`}>
+            <Button
+              type="button"
+              variant="outline"
+              className={`${baseSocial} ${liftHover} ${colorHover}`}
+            >
               <Image
                 unoptimized
                 src="/icons/google-logo.png"
@@ -258,7 +282,11 @@ export default function SignUpForm() {
             </Button>
 
             {/* Facebook */}
-            <Button type="button" variant="outline" className={`${baseSocial} ${liftHover} ${colorHover}`}>
+            <Button
+              type="button"
+              variant="outline"
+              className={`${baseSocial} ${liftHover} ${colorHover}`}
+            >
               <Image
                 unoptimized
                 src="/icons/facebook-logo.png"
@@ -270,7 +298,11 @@ export default function SignUpForm() {
             </Button>
 
             {/* Apple */}
-            <Button type="button" variant="outline" className={`${baseSocial} ${liftHover} ${colorHover}`}>
+            <Button
+              type="button"
+              variant="outline"
+              className={`${baseSocial} ${liftHover} ${colorHover}`}
+            >
               {mounted ? (
                 <Image
                   unoptimized
@@ -290,18 +322,18 @@ export default function SignUpForm() {
             </Button>
           </div>
 
-          {/* Login link */}
+                   {/* Login link */}
           <p
-            className={`text-center text-sm opacity-80 mt-12 transition-all duration-500 delay-225 hover:opacity-100 ${
+            className={`text-center text-sm text-muted-foreground mt-15 transition-all duration-500 delay-225 hover:opacity-100 ${
               animate ? "opacity-100" : "opacity-0"
             }`}
           >
-            ¿Ya tienes una cuenta?{" "}
+            ¿Todavía no tienes una cuenta?{" "}
             <a
               href="inicio-sesion"
-              className="font-semibold hover:underline hover:scale-105 inline-block transition-all duration-300"
+              className="font-semibold text-foreground hover:underline hover:scale-105 inline-block transition-all duration-300"
             >
-              Inicia sesión
+              Iniciar sesión
             </a>
           </p>
         </div>
@@ -309,7 +341,7 @@ export default function SignUpForm() {
 
       {/* Right Side */}
       <div className="hidden lg:block lg:col-span-9 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-blue-800/80 dark:from-neutral-900/80 dark:to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-br  dark:from-neutral-900/80 dark:to-black/80" />
         <Image
           src="/img/1.jpg"
           alt="Laboratory"

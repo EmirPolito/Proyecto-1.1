@@ -200,20 +200,17 @@ export default function SignUpForm() {
       </div>
 
       {/* Right Side */}
-      <div className="hidden lg:block lg:col-span-9 relative">
-        {/* Overlay con color de fondo según tema para evitar flash */}
-        <div className="absolute inset-0 bg-background dark:bg-black opacity-70 transition-colors" />
-        {mounted && (
-          <Image
-            src="/img/1.jpg"
-            alt="Laboratory"
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-        )}
-      </div>
+           <div className="hidden lg:block lg:col-span-9 relative">
+             <div className="absolute inset-0 bg-gradient-to-br  dark:from-neutral-900/80 dark:to-black/80" />
+             <Image
+               src="/img/1.jpg"
+               alt="Laboratory"
+               fill
+               className="object-cover"
+               priority
+               unoptimized
+             />
+           </div>
     </div>
   );
 }
