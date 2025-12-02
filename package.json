@@ -38,7 +38,6 @@
     "firebase": "^12.6.0",
     "lucide-react": "^0.545.0",
     "mongodb": "^7.0.0",
-    "mongoose": "^9.0.0",
     "motion": "^12.23.25",
     "next": "15.5.4",
     "next-auth": "^4.24.13",
