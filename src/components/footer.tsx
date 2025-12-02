@@ -197,14 +197,14 @@ const Footer = () => {
                   Blog
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/docs"
                   className="text-sm text-muted-foreground hover:text-foreground"
                 >
                   Documentación
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </motion.div>
         </div>
