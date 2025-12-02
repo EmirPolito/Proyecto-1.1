@@ -1,7 +1,14 @@
+"use client";
+
+import { AnimatedHeader } from "@/components/animated-header";
+import Footer from "@/components/footer";
+
 export default function DemooPage() {
   return (
-    <div className="text-3xl text-black p-10">
-      Página de DEMO funcionando
+    <div>
+      <AnimatedHeader />
+
+      <Footer />
     </div>
   );
 }

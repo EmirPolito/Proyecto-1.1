@@ -7,8 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
+  const router = useRouter();
+
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -22,9 +25,21 @@ export default function SignUpForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // VALIDACIÓN TEMPORAL
+    if (!email.trim()) {
+      alert("Debes ingresar tu correo.");
+      return;
+    }
+
     setIsLoading(true);
+
     setTimeout(() => {
       console.log("Form submitted:", { email });
+
+      // REDIRECCIÓN AL MENÚ
+      router.push("/menu");
+
       setIsLoading(false);
     }, 1500);
   };
@@ -101,19 +116,17 @@ export default function SignUpForm() {
               type="submit"
               disabled={isLoading}
               className={`
-    w-full py-1 font-semibold rounded-lg transition-all duration-300 
-    mt-2 border-2 border-[var(--primary-2)]
-    bg-[var(--primary-2)] text-[var(--primary-foreground)]
-    ${liftHover}
-    hover:bg-[var(--primary-2)]  
-    hover:text-[var(--primary-foreground)] 
-    hover:shadow-[0_0_12px_var(--mode-accent)]
-    hover:scale-105
-    active:scale-95
-
-    /* animación de entrada */
-    ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
-  `}
+              w-full py-1 font-semibold rounded-lg transition-all duration-300 
+              mt-2 border-2 border-[var(--primary-2)]
+              bg-[var(--primary-2)] text-[var(--primary-foreground)]
+              ${liftHover}
+              hover:bg-[var(--primary-2)]  
+              hover:text-[var(--primary-foreground)] 
+              hover:shadow-[0_0_12px_var(--mode-accent)]
+              hover:scale-105
+              active:scale-95
+              ${animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+            `}
             >
               {isLoading ? "Iniciando sesión..." : "Iniciar sesión"}
             </Button>
@@ -213,7 +226,7 @@ export default function SignUpForm() {
 
       {/* Right Side */}
       <div className="hidden lg:block lg:col-span-9 relative">
-        <div className="absolute inset-0 bg-gradient-to-br  dark:from-neutral-900/80 dark:to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-br dark:from-neutral-900/80 dark:to-black/80" />
         <Image
           src="/img/img-iniciosesion.jpg"
           alt="Laboratory"
