@@ -30,6 +30,8 @@ function HomePage() {
     <div>
       
       <HeroParallaxDemo />
+            <AnimatedPinDemo />
+
 
       <div className="py-10">
         <InfiniteMovingCards
@@ -40,7 +42,6 @@ function HomePage() {
       </div>
 
       {/* <CardHoverEffectDemo /> */}
-      <AnimatedPinDemo />
       <Footer />
     </div>
   );

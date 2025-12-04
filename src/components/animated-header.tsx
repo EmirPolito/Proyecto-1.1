@@ -55,6 +55,7 @@ export function AnimatedHeader() {
   }, [resolvedTheme]);
 
   const navItems = [
+    { label: "Inicio", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: "Ayuda", href: "/ayuda" },
     { label: "Contacto", href: "/contacto" },
