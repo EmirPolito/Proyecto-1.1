@@ -74,24 +74,24 @@ export default function ContactForm() {
     w-full
     transition-all duration-300
     hover:border-gray-500 dark:hover:border-neutral-600
-    hover:shadow-sm hover:scale-[1.02] focus:scale-[1.02] focus:border-blue-500
+    hover:shadow-sm hover:scale-[1.02] focus:scale-[1.02] focus:border-border dark:focus:border-neutral-700 focus:ring-0 focus-visible:ring-0
   `;
 
   return (
     <motion.section
-      className="relative min-h-screen font-inter px-6 pt-32 pb-32"
+      className="relative min-h-screen font-inter px-6 pt-35 pb-32"
       initial="hidden"
       animate="visible"
     >
       {/* TÍTULO */}
       <motion.div className="text-center mb-30" variants={fadeInUp} custom={0}>
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-3 text-balance">
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-2 text-balance">
           Contáctanos
         </h1>
 
         <p className="text-lg text-muted-foreground text-balance max-w-1xl mx-auto">
           Si necesitas soporte, deseas colaborar o tienes preguntas sobre el
-          sistema RALQ, nuestro equipo está disponible para ayudarte.
+          sistema, estámos disponible para ayudarte.
         </p>
       </motion.div>
 

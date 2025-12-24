@@ -19,7 +19,10 @@ export function AnimatedHeader() {
 
   const pathname = usePathname();
 
-  const hideMenuRoutes = ["/inicio-sesion", "/registro", "/menu"];
+  const hideMenuRoutes =
+    ["/inicio-sesion",
+      "/registro",
+      "/menu"];
 
   const fixedHeaderRoutes: string[] = [];
 
@@ -54,8 +57,21 @@ export function AnimatedHeader() {
     }
   }, [resolvedTheme]);
 
+
+  // 🔥 Ocultar TODO el header en rutas específicas SIN romper hooks
+  if (shouldHideMenu) {
+    return <header className="h-0"></header>;
+  }
+
+
+  // Rutas donde SÍ debe aparecer el botón "Inicio"
+  const showInicioRoutes = ["/blog", "/ayuda", "/contacto", "/nosotros"];
+
   const navItems = [
-    { label: "Inicio", href: "/" },
+    ...(showInicioRoutes.includes(pathname)
+      ? [{ label: "Inicio", href: "/" }]
+      : []),
+
     { label: "Blog", href: "/blog" },
     { label: "Ayuda", href: "/ayuda" },
     { label: "Contacto", href: "/contacto" },
@@ -103,9 +119,9 @@ export function AnimatedHeader() {
             )}
           </Link>
 
+          {/* Menú desktop */}
           {!shouldHideMenu && (
             <>
-              {/* Menú desktop */}
               <nav className="hidden md:flex items-center gap-1">
                 {navItems.map((item, index) => (
                   <a

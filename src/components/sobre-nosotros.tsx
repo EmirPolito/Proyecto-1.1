@@ -5,6 +5,7 @@ import { Timeline } from "@/components/ui/sobrenNosotros";
 
 export function TimelineDemo() {
   const data = [
+    
     {
       title: "2023",
       content: (
@@ -20,13 +21,13 @@ export function TimelineDemo() {
 
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="img/9-img.jpg"
-              alt="startup template"
+              src="https://assets.aceternity.com/pro/hero-sections.png"
+              alt="hero template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
             <img
-              src="img/10-img.jpg"
-              alt="startup template"
+              src="https://assets.aceternity.com/features-section.png"
+              alt="feature template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
           </div>
@@ -47,12 +48,12 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="img/12-img.png"
+              src="https://assets.aceternity.com/pro/hero-sections.png"
               alt="hero template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
             <img
-              src="img/13-img.png"
+              src="https://assets.aceternity.com/features-section.png"
               alt="feature template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
@@ -75,33 +76,34 @@ export function TimelineDemo() {
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
-              src="img/15-img.png"
+              src="https://assets.aceternity.com/pro/hero-sections.png"
               alt="hero template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
             <img
-              src="img/14-img.png"
+              src="https://assets.aceternity.com/features-section.png"
               alt="feature template"
               className="h-50 w-full rounded-lg object-cover border-[var(--border-theme)]"
             />
-
           </div>
         </div>
       ),
     },
-    {
+    
+   
+     {
 
       
       title: "Mejoras continuas",
       content: (
         <div>
           <p className="mb-2 text-base md:text-lg text-[var(--foreground)]">
-            Implementamos nuevas funciones y modelos 3D para mejorar la
+            Seguiremos Implementando nuevas funciones y modelos 3D para mejorar la
             interacción.
           </p>
           <p className="mb-8 text-base md:text-lg text-[var(--foreground-secondary)]">
-            Actualizamos componentes y secciones para mantener la plataforma
-            moderna y atractiva.
+            Actualizaremos componentes y secciones para mantener la plataforma
+            más accesible.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -119,6 +121,7 @@ export function TimelineDemo() {
         </div>
       ),
     },
+    
     {
       
       title: "",

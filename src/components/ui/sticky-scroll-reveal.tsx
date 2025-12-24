@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll, motion } from "motion/react";
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const StickyScroll = ({
@@ -14,81 +14,107 @@ export const StickyScroll = ({
   }[];
   contentClassName?: string;
 }) => {
-  const [activeCard, setActiveCard] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    container: ref,
-    offset: ["start start", "end start"],
-  });
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  const [activeCard, setActiveCard] = useState(0);
   const cardLength = content.length;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0,
-    );
-    setActiveCard(closestBreakpointIndex);
+  // Scroll basado en el contenedor
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  const backgroundColors = ["#0f172a", "#000000", "#171717"];
-  const linearGradients = [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)",
-    "linear-gradient(to bottom right, #ec4899, #6366f1)",
-    "linear-gradient(to bottom right, #f97316, #eab308)",
-  ];
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const index = Math.floor(latest * cardLength);
+    if (index !== activeCard) {
+      setActiveCard(Math.min(index, cardLength - 1));
+    }
+  });
 
-  const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
+// SOLO NEGRO Y AZUL OSCURO
+const bgColors = [
+  "#001A4D", // azul oscuro
+  "#000000", // negro
+  "#001A4D", // azul oscuro
+  "#000000", // negro
+  "#001A4D", // azul oscuro
+];
 
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
+// PANEL DERECHO (AZUL OSCURO)
+const gradients = [
+  "#001A4D",
+  "#001A4D",
+  "#001A4D",
+  "#001A4D",
+  "#001A4D",
+];
+
+
+
+
+
 
   return (
     <motion.div
-      animate={{ backgroundColor: backgroundColors[activeCard % backgroundColors.length] }}
-      className="relative flex h-[30rem] justify-center space-x-10 overflow-y-auto rounded-md p-10"
-      ref={ref}
+      ref={containerRef}
+      animate={{ backgroundColor: bgColors[activeCard] }}
+      transition={{ duration: 0.1, ease: "easeOut" }}
+      className="relative flex justify-center gap-40 px-20 py-5 w-full min-h-screen"
     >
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
-          {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
-                initial={{ opacity: 0 }}
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-2xl font-bold text-slate-100"
+      {/* TEXTOS */}
+      <div className="flex items-start px-10">
+        <div className="max-w-3xl">
+          {content.map((item, index) => {
+            const isActive = index === activeCard;
+
+            return (
+              <div
+                key={index}
+                className="min-h-[100vh] flex flex-col justify-center"
               >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-                className="text-kg mt-10 max-w-sm text-slate-300"
-              >
-                {item.description}
-              </motion.p>
-            </div>
-          ))}
-          <div className="h-40" />
+                <h2
+                  className={cn(
+                    "text-5xl font-bold transition-opacity duration-300",
+                    isActive ? "text-white opacity-100" : "text-gray-400 opacity-40"
+                  )}
+                >
+                  {item.title}
+                </h2>
+
+                <p
+                  className={cn(
+                    "mt-4 max-w-lg text-xl transition-opacity duration-300",
+                    isActive ? "text-gray-100 opacity-100" : "text-gray-500 opacity-30"
+                  )}
+                >
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
-      <div
-        style={{ background: backgroundGradient }}
+
+      {/* PANEL DERECHO (SIN ZOOM, SIN PARPADEO, FADE-IN/FADE-OUT SUAVE) */}
+      <motion.div
+        key={activeCard}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 1,
+          delay: 0.2,   // <--- aparece un poco después, ya no muy temprano
+          ease: "easeOut",
+        }}
+        style={{ background: gradients[activeCard] }}
         className={cn(
-          "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
-          contentClassName,
+          "sticky top-40 hidden h-[25rem] w-[45rem] overflow-hidden rounded-2xl lg:block shadow-2xl",
+          contentClassName
         )}
       >
-        {content[activeCard].content ?? null}
-      </div>
+        {content[activeCard].content}
+      </motion.div>
     </motion.div>
   );
 };

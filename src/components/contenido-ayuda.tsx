@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface SupportItem {
   id: string;
@@ -89,10 +90,16 @@ export default function ContenidoBlog() {
   }
 
   return (
-    <div className="w-full bg-background py-31 px-4 transition-colors">
+    <div className="w-full bg-background py-35 px-4 transition-colors">
       <div className="max-w-6xl mx-auto">
+
         {/* Header */}
-        <div className="text-center mb-30">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center mb-30"
+        >
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-3 text-balance">
             Centro de Ayuda
           </h1>
@@ -101,7 +108,7 @@ export default function ContenidoBlog() {
             Encuentra asistencia rápida sobre el funcionamiento del sistema
             RALQ, guías, tutoriales, reportes y soporte personalizado.
           </p>
-        </div>
+        </motion.div>
 
         {/* Items */}
         <div className="space-y-17">
@@ -111,15 +118,21 @@ export default function ContenidoBlog() {
               className="grid grid-cols-1 md:grid-cols-3 gap-2"
             >
               {row.map((item, itemIndex) => (
-                <div
+                <motion.div
                   key={item.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: "easeOut",
+                    delay: (rowIndex * 3 + itemIndex) * 0.08, // animación escalonada SOLO al cargar
+                  }}
                   className={`py-13 px-8 transition-all duration-300 relative group border-border
                     ${itemIndex !== row.length - 1 ? "md:border-r" : ""}
                   `}
                   onMouseEnter={() => setHoveredId(item.id)}
                   onMouseLeave={() => setHoveredId(null)}
                 >
-                  {/* Content */}
                   <div className="mb-8">
                     <h2 className="text-2xl font-semibold text-foreground mb-3">
                       {item.title}
@@ -129,7 +142,6 @@ export default function ContenidoBlog() {
                     </p>
                   </div>
 
-                  {/* Hover button */}
                   <div
                     className={`transition-all duration-300 overflow-hidden 
                       ${
@@ -148,18 +160,14 @@ export default function ContenidoBlog() {
                     </Link>
                   </div>
 
-                  {/* hover background using theme vars */}
                   <div
-                    className={`
-                      absolute inset-0 
-                      opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300 -z-10
+                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10
                       bg-gradient-to-r
                       from-[var(--card-background,rgba(0,0,0,0.2))]
                       to-transparent
                     `}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           ))}

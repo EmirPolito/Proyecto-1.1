@@ -62,6 +62,22 @@ export default function SignUpForm() {
     : "";
 
   return (
+    <>
+      {/* BOTÓN PARA VOLVER AL INICIO */}
+<button
+  onClick={() => router.push("/")}
+  className="
+    absolute top-10 left-10 z-50
+    text-sm font-medium text-foreground
+    cursor-pointer
+    transition-all duration-200
+    hover:translate-y-0
+  "
+>
+  ← Inicio
+</button>
+
+
     <div className="grid grid-cols-1 lg:grid-cols-20 min-h-screen max-h-screen overflow-hidden bg-background text-foreground transition-colors">
       {/* Left Side */}
       <div className="lg:col-span-11 flex items-center justify-center p-6 lg:p-8 bg-background text-foreground overflow-y-auto transition-colors">
@@ -72,12 +88,12 @@ export default function SignUpForm() {
               animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
             }`}
           >
-            <h1 className="text-3xl font-bold mb-2 hover:scale-105 transition-transform duration-300 cursor-default">
+            <h1 className="text-3xl font-bold mb-2  transition-transform duration-300 cursor-default">
               Iniciar sesión
             </h1>
 
-            <p className="text-base text-muted-foreground transition-colors">
-              Bienvenido/a de nuevo a RALQ. Por favor, introduzca sus datos.
+              <p className="text-sm opacity-85 transition-opacity">
+              Bienvenido/a de nuevo. Por favor, introduzca sus datos.
             </p>
           </div>
 
@@ -100,16 +116,15 @@ export default function SignUpForm() {
                 value={email}
                 placeholder="Introduce tu correo"
                 onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-background dark:bg-neutral-900 
-                border-2 border-border dark:border-neutral-700
-                text-foreground dark:text-white 
-                placeholder:text-gray-400 dark:placeholder:text-gray-300
-                px-3 py-2.5 rounded-lg 
-                focus:border-blue-500 transition-all duration-300 
-                hover:border-gray-400 dark:hover:border-neutral-600 
-                hover:shadow-sm hover:scale-105 focus:scale-105"
-              />
+                  required
+                  style={{
+                    WebkitBoxShadow: "0 0 0 1000px var(--background) inset",
+                    WebkitTextFillColor: "var(--foreground)",
+                    caretColor: "var(--foreground)",
+                    backgroundColor: "var(--background)",
+                  }}
+                  className="bg-background dark:bg-neutral-900 border-2 border-border dark:border-neutral-700 text-foreground dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-300 w-full px-3 py-2.5 rounded-lg focus:border-border dark:focus:border-neutral-700 focus:ring-0 focus-visible:ring-0 transition-all duration-300 hover:border-gray-400 dark:hover:border-neutral-600 hover:shadow-sm hover:scale-105 focus:scale-105 pr-20"
+                />
             </div>
 
             <Button
@@ -119,7 +134,7 @@ export default function SignUpForm() {
               w-full py-1 font-semibold rounded-lg transition-all duration-300 
               mt-2 border-2 border-[var(--primary-2)]
               bg-[var(--primary-2)] text-[var(--primary-foreground)]
-              ${liftHover}
+              ${liftHover} cursor-pointer
               hover:bg-[var(--primary-2)]  
               hover:text-[var(--primary-foreground)] 
               hover:shadow-[0_0_12px_var(--mode-accent)]
@@ -155,7 +170,7 @@ export default function SignUpForm() {
             <Button
               type="button"
               variant="outline"
-              className={`${baseSocial} ${liftHover} ${colorHover}`}
+              className={`${baseSocial} ${liftHover} ${colorHover} cursor-pointer`}
             >
               <Image
                 src="/icons/google-logo.png"
@@ -171,7 +186,7 @@ export default function SignUpForm() {
             <Button
               type="button"
               variant="outline"
-              className={`${baseSocial} ${liftHover} ${colorHover}`}
+              className={`${baseSocial} ${liftHover} ${colorHover} cursor-pointer`}
             >
               <Image
                 src="/icons/facebook-logo.png"
@@ -187,7 +202,7 @@ export default function SignUpForm() {
             <Button
               type="button"
               variant="outline"
-              className={`${baseSocial} ${liftHover} ${colorHover}`}
+              className={`${baseSocial} ${liftHover} ${colorHover} cursor-pointer`}
             >
               {mounted && (
                 <Image
@@ -234,8 +249,10 @@ export default function SignUpForm() {
           className="object-cover"
           priority
           unoptimized
-        />
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+

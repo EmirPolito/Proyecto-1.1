@@ -40,9 +40,12 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 } /* -------- TEMA BASE (LIGHT) -------- */ /**/ /* Esto hace que los botones y demas tengan bordes,etc */
+
+
+
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #f5f5f5;
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -50,7 +53,7 @@
   --popover-foreground: oklch(0.129 0.042 264.695);
 
   /* color al blanco que aparece al pasar el curosr en el header linea */
-  --primary: #14a8d5;
+  --primary: #19dbf1;
   --primary-2: #000000;
   --primary-3: #ffffff;
   --primary-4: #635f5f;
@@ -319,4 +322,13 @@ body[data-radix-scroll-lock] {
 
 .animate-fade-in-up {
   animation: fade-in-up 0.25s ease-out;
+}
+
+/* Ocultar scrollbar en todos los navegadores */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }

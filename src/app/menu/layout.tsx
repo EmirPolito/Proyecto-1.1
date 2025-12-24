@@ -6,7 +6,7 @@ import "../globals.css";
 export default function HeaderLayout({ children }: { children?: React.ReactNode }) {
   return (
     <>
-      <AnimatedHeaderMenu /> {/* Solo un header */}
+      {/* <AnimatedHeaderMenu /> Solo un header */}
       {children}
     </>
   );
